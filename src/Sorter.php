@@ -36,10 +36,13 @@ class Sorter
         $stack = [];
         $path = [];
 
-        foreach ($this->list->getVertices() as $vertex)
-            if($this->list->getInDegree($vertex) + 1 == $this->list->getOutDegree($vertex))
+        foreach ($this->list->getVertices() as $vertex) {
+            if ($this->list->getInDegree($vertex) + 1 == $this->list->getOutDegree($vertex))
                 $start = $vertex;
+        }
 
+        if (is_null($start))
+            $start = $this->list->getVertices()[0];
         $current = $this->list->pop($start);
 
         do {

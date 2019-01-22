@@ -32,4 +32,27 @@ class SorterTest extends TestCase
         $sorter = new Sorter($set);
         $this->assertEquals($expected, $sorter->sort());
     }
+
+    /**
+     * @test
+     */
+    public function it_sorts_a_given_array_of_boarding_cards_comprising_a_circuit() {
+        $set = [
+            new BoardingCard('Stockholm', 'New York'),
+            new BoardingCard('Barcelona', 'Gerona'),
+            new BoardingCard('New York', 'Barcelona'),
+            new BoardingCard('Madrid', 'Stockholm'),
+            new BoardingCard('Gerona', 'Madrid'),
+        ];
+        $expected = [
+            new BoardingCard('Stockholm', 'New York'),
+            new BoardingCard('New York', 'Barcelona'),
+            new BoardingCard('Barcelona', 'Gerona'),
+            new BoardingCard('Gerona', 'Madrid'),
+            new BoardingCard('Madrid', 'Stockholm'),
+        ];
+
+        $sorter = new Sorter($set);
+        $this->assertEquals($expected, $sorter->sort());
+    }
 }
