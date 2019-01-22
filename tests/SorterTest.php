@@ -103,4 +103,20 @@ class SorterTest extends TestCase
         $sorter = new Sorter($set);
         $this->assertEquals($expected, $sorter->sort());
     }
+
+    /**
+     * @test
+     * @expectedException TripSorter\Exceptions\PathCannotBeMadeException
+     */
+    public function it_throws_exception_when_a_path_cannot_be_made() {
+        $set = [
+            new BoardingCard('New York', 'Stockholm'),
+            new BoardingCard('Barcelona', 'Gerona'),
+            new BoardingCard('New York', 'Barcelona'),
+            new BoardingCard('Madrid', 'Stockholm'),
+        ];
+
+        $sorter = new Sorter($set);
+        $sorter->sort();
+    }
 }

@@ -8,6 +8,8 @@
 
 namespace TripSorter;
 
+use TripSorter\Exceptions\PathCannotBeMadeException;
+
 class Sorter
 {
     /**
@@ -35,14 +37,24 @@ class Sorter
         $start = null;
         $stack = [];
         $path = [];
+        $odds = 0;
+        $candidates = [];
 
         foreach ($this->list->getVertices() as $vertex) {
+            if ($this->list->getInDegree($vertex) == $this->list->getOutDegree($vertex))
+                continue;
+            $odds++;
             if ($this->list->getInDegree($vertex) + 1 == $this->list->getOutDegree($vertex))
-                $start = $vertex;
+                $candidates[] = $vertex;
         }
 
-        if (is_null($start))
+        if ($odds == 0)
             $start = $this->list->getVertices()[0];
+        else if ($odds == 2 && count($candidates) == 1)
+            $start = $candidates[0];
+        else
+            throw new PathCannotBeMadeException();
+
         $current = $this->list->pop($start);
 
         do {

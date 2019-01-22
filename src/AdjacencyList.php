@@ -31,10 +31,10 @@ class AdjacencyList
     {
         $from = $edge->getFrom();
         $to = $edge->getTo();
-        $this->list[$from] = $this->list[$from] ?: [];
-        $this->list[$to] = $this->list[$to] ?: [];
-        $this->in[$from] = $this->in[$from] ?: 0;
-        $this->in[$to] = $this->in[$to] ?: 0;
+        $this->list[$from] = $this->list[$from] ?? [];
+        $this->list[$to] = $this->list[$to] ?? [];
+        $this->in[$from] = $this->in[$from] ?? 0;
+        $this->in[$to] = $this->in[$to] ?? 0;
         array_push($this->list[$from], $edge);
         $this->in[$to]++;
     }
