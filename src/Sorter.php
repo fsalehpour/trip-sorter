@@ -10,6 +10,10 @@ namespace TripSorter;
 
 class Sorter
 {
+    /**
+     * @var AdjacencyList
+     */
+    protected $list;
 
     /**
      * Sorter constructor.
@@ -17,9 +21,16 @@ class Sorter
      */
     public function __construct(array $edges)
     {
+        $this->list = new AdjacencyList();
+        foreach ($edges as $edge) {
+            $this->list->add($edge);
+        }
     }
 
-    public function sort()
+    /**
+     * @return array
+     */
+    public function sort(): array
     {
         return [
             new BoardingCard('Madrid', 'Stockholm'),
