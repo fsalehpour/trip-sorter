@@ -58,4 +58,9 @@ class AdjacencyList
     {
         return $this->in[$vertex];
     }
+
+    public function pop(string $vertex): BoardingCard
+    {
+        return array_pop($this->list[$vertex]);
+    }
 }

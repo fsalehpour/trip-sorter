@@ -32,11 +32,17 @@ class Sorter
      */
     public function sort(): array
     {
-        return [
-            new BoardingCard('Madrid', 'Stockholm'),
-            new BoardingCard('Stockholm', 'New York'),
-            new BoardingCard('New York', 'Barcelona'),
-            new BoardingCard('Barcelona', 'Gerona'),
-        ];
+        $start = null;
+        $stack = [];
+        $path = [];
+
+        foreach ($this->list->getVertices() as $vertex) {
+            if($this->list->getInDegree($vertex) + 1 == $this->list->getOutDegree($vertex))
+                $start = $vertex;
+        }
+
+        $current = $this->list->pop($vertex);
+
+
     }
 }

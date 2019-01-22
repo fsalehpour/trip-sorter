@@ -80,4 +80,17 @@ class AdjacencyListTest extends TestCase
         $this->assertEquals(1, $list->getInDegree("B"));
         $this->assertEquals(2, $list->getInDegree("C"));
     }
+
+    /**
+     * @test
+     */
+    public function it_pops_an_edge_for_a_vertex() {
+        $list = new AdjacencyList();
+        $list->add(new BoardingCard("A", "B"));
+        $list->add(new BoardingCard("A", "C"));
+        $list->add(new BoardingCard("B", "C"));
+        $this->assertEquals(2, $list->getOutDegree("A"));
+        $this->assertEquals(new BoardingCard("A", "C"), $list->pop("A"));
+        $this->assertEquals(1, $list->getOutDegree("A"));
+    }
 }
