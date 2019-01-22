@@ -55,4 +55,52 @@ class SorterTest extends TestCase
         $sorter = new Sorter($set);
         $this->assertEquals($expected, $sorter->sort());
     }
+
+    /**
+     * @test
+     */
+    public function it_sorts_a_path_with_recurring_city() {
+        $set = [
+            new BoardingCard('Madrid', 'Barcelona'),
+            new BoardingCard('Stockholm', 'Barcelona'),
+            new BoardingCard('Barcelona', 'New York'),
+            new BoardingCard('Gerona', 'Stockholm'),
+            new BoardingCard('Barcelona', 'Gerona'),
+        ];
+        $expected = [
+            new BoardingCard('Madrid', 'Barcelona'),
+            new BoardingCard('Barcelona', 'Gerona'),
+            new BoardingCard('Gerona', 'Stockholm'),
+            new BoardingCard('Stockholm', 'Barcelona'),
+            new BoardingCard('Barcelona', 'New York'),
+        ];
+
+        $sorter = new Sorter($set);
+        $this->assertEquals($expected, $sorter->sort());
+    }
+
+    /**
+     * @test
+     */
+    public function it_sorts_a_circuit_with_recurring_city() {
+        $set = [
+            new BoardingCard('Gerona', 'Madrid'),
+            new BoardingCard('Stockholm', 'New York'),
+            new BoardingCard('Madrid', 'Barcelona'),
+            new BoardingCard('Gerona', 'Stockholm'),
+            new BoardingCard('New York', 'Gerona'),
+            new BoardingCard('Barcelona', 'Gerona'),
+        ];
+        $expected = [
+            new BoardingCard('Gerona', 'Stockholm'),
+            new BoardingCard('Stockholm', 'New York'),
+            new BoardingCard('New York', 'Gerona'),
+            new BoardingCard('Gerona', 'Madrid'),
+            new BoardingCard('Madrid', 'Barcelona'),
+            new BoardingCard('Barcelona', 'Gerona'),
+        ];
+
+        $sorter = new Sorter($set);
+        $this->assertEquals($expected, $sorter->sort());
+    }
 }
