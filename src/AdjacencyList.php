@@ -23,7 +23,9 @@ class AdjacencyList
     public function add(BoardingCard $edge)
     {
         $from = $edge->getFrom();
+        $to = $edge->getTo();
         $this->list[$from] = $this->list[$from] ?: [];
+        $this->list[$to] = $this->list[$to] ?: [];
         array_push($this->list[$from], $edge);
     }
 
@@ -32,5 +34,9 @@ class AdjacencyList
         return $this->list[$vertex];
     }
 
+    public function getVertices(): array
+    {
+        return array_keys($this->list);
+    }
 
 }
