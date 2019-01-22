@@ -27,7 +27,10 @@ class AdjacencyList
     {
     }
 
-    public function add(BoardingCard $edge): void
+    /**
+     * @param EdgeInterface $edge
+     */
+    public function add(EdgeInterface $edge): void
     {
         $from = $edge->getFrom();
         $to = $edge->getTo();
@@ -39,27 +42,46 @@ class AdjacencyList
         $this->in[$to]++;
     }
 
+    /**
+     * @param string $vertex
+     * @return array
+     */
     public function getNeighbours(string $vertex): array
     {
         return $this->list[$vertex];
     }
 
+    /**
+     * @return array
+     */
     public function getVertices(): array
     {
         return array_keys($this->list);
     }
 
+    /**
+     * @param string $vertex
+     * @return int
+     */
     public function getOutDegree(string $vertex): int
     {
         return count($this->list[$vertex]);
     }
 
+    /**
+     * @param string $vertex
+     * @return int
+     */
     public function getInDegree(string $vertex): int
     {
         return $this->in[$vertex];
     }
 
-    public function pop(string $vertex): BoardingCard
+    /**
+     * @param string $vertex
+     * @return EdgeInterface
+     */
+    public function pop(string $vertex): EdgeInterface
     {
         return array_pop($this->list[$vertex]);
     }

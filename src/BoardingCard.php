@@ -9,7 +9,7 @@
 namespace TripSorter;
 
 
-class BoardingCard
+class BoardingCard implements EdgeInterface
 {
     /**
      * @var string
