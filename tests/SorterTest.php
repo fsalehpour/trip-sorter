@@ -6,9 +6,11 @@
  * Time: 21:31
  */
 
-use TripSorter\BoardingCard;
-use TripSorter\Sorter;
+namespace TripSorter\Test;
+
 use PHPUnit\Framework\TestCase;
+use TripSorter\Sorter;
+use TripSorter\Test\Helpers\Edge;
 
 class SorterTest extends TestCase
 {
@@ -17,16 +19,16 @@ class SorterTest extends TestCase
      */
     public function it_sorts_a_given_array_of_boarding_cards() {
         $set = [
-            new BoardingCard('Stockholm', 'New York'),
-            new BoardingCard('Barcelona', 'Gerona'),
-            new BoardingCard('New York', 'Barcelona'),
-            new BoardingCard('Madrid', 'Stockholm'),
+            new Edge('Stockholm', 'New York'),
+            new Edge('Barcelona', 'Gerona'),
+            new Edge('New York', 'Barcelona'),
+            new Edge('Madrid', 'Stockholm'),
         ];
         $expected = [
-            new BoardingCard('Madrid', 'Stockholm'),
-            new BoardingCard('Stockholm', 'New York'),
-            new BoardingCard('New York', 'Barcelona'),
-            new BoardingCard('Barcelona', 'Gerona'),
+            new Edge('Madrid', 'Stockholm'),
+            new Edge('Stockholm', 'New York'),
+            new Edge('New York', 'Barcelona'),
+            new Edge('Barcelona', 'Gerona'),
         ];
 
         $sorter = new Sorter($set);
@@ -38,18 +40,18 @@ class SorterTest extends TestCase
      */
     public function it_sorts_a_given_array_of_boarding_cards_comprising_a_circuit() {
         $set = [
-            new BoardingCard('Stockholm', 'New York'),
-            new BoardingCard('Barcelona', 'Gerona'),
-            new BoardingCard('New York', 'Barcelona'),
-            new BoardingCard('Madrid', 'Stockholm'),
-            new BoardingCard('Gerona', 'Madrid'),
+            new Edge('Stockholm', 'New York'),
+            new Edge('Barcelona', 'Gerona'),
+            new Edge('New York', 'Barcelona'),
+            new Edge('Madrid', 'Stockholm'),
+            new Edge('Gerona', 'Madrid'),
         ];
         $expected = [
-            new BoardingCard('Stockholm', 'New York'),
-            new BoardingCard('New York', 'Barcelona'),
-            new BoardingCard('Barcelona', 'Gerona'),
-            new BoardingCard('Gerona', 'Madrid'),
-            new BoardingCard('Madrid', 'Stockholm'),
+            new Edge('Stockholm', 'New York'),
+            new Edge('New York', 'Barcelona'),
+            new Edge('Barcelona', 'Gerona'),
+            new Edge('Gerona', 'Madrid'),
+            new Edge('Madrid', 'Stockholm'),
         ];
 
         $sorter = new Sorter($set);
@@ -61,18 +63,18 @@ class SorterTest extends TestCase
      */
     public function it_sorts_a_path_with_recurring_city() {
         $set = [
-            new BoardingCard('Madrid', 'Barcelona'),
-            new BoardingCard('Stockholm', 'Barcelona'),
-            new BoardingCard('Barcelona', 'New York'),
-            new BoardingCard('Gerona', 'Stockholm'),
-            new BoardingCard('Barcelona', 'Gerona'),
+            new Edge('Madrid', 'Barcelona'),
+            new Edge('Stockholm', 'Barcelona'),
+            new Edge('Barcelona', 'New York'),
+            new Edge('Gerona', 'Stockholm'),
+            new Edge('Barcelona', 'Gerona'),
         ];
         $expected = [
-            new BoardingCard('Madrid', 'Barcelona'),
-            new BoardingCard('Barcelona', 'Gerona'),
-            new BoardingCard('Gerona', 'Stockholm'),
-            new BoardingCard('Stockholm', 'Barcelona'),
-            new BoardingCard('Barcelona', 'New York'),
+            new Edge('Madrid', 'Barcelona'),
+            new Edge('Barcelona', 'Gerona'),
+            new Edge('Gerona', 'Stockholm'),
+            new Edge('Stockholm', 'Barcelona'),
+            new Edge('Barcelona', 'New York'),
         ];
 
         $sorter = new Sorter($set);
@@ -84,20 +86,20 @@ class SorterTest extends TestCase
      */
     public function it_sorts_a_circuit_with_recurring_city() {
         $set = [
-            new BoardingCard('Gerona', 'Madrid'),
-            new BoardingCard('Stockholm', 'New York'),
-            new BoardingCard('Madrid', 'Barcelona'),
-            new BoardingCard('Gerona', 'Stockholm'),
-            new BoardingCard('New York', 'Gerona'),
-            new BoardingCard('Barcelona', 'Gerona'),
+            new Edge('Gerona', 'Madrid'),
+            new Edge('Stockholm', 'New York'),
+            new Edge('Madrid', 'Barcelona'),
+            new Edge('Gerona', 'Stockholm'),
+            new Edge('New York', 'Gerona'),
+            new Edge('Barcelona', 'Gerona'),
         ];
         $expected = [
-            new BoardingCard('Gerona', 'Stockholm'),
-            new BoardingCard('Stockholm', 'New York'),
-            new BoardingCard('New York', 'Gerona'),
-            new BoardingCard('Gerona', 'Madrid'),
-            new BoardingCard('Madrid', 'Barcelona'),
-            new BoardingCard('Barcelona', 'Gerona'),
+            new Edge('Gerona', 'Stockholm'),
+            new Edge('Stockholm', 'New York'),
+            new Edge('New York', 'Gerona'),
+            new Edge('Gerona', 'Madrid'),
+            new Edge('Madrid', 'Barcelona'),
+            new Edge('Barcelona', 'Gerona'),
         ];
 
         $sorter = new Sorter($set);
@@ -106,14 +108,14 @@ class SorterTest extends TestCase
 
     /**
      * @test
-     * @expectedException TripSorter\Exceptions\PathCannotBeMadeException
+     * @expectedException \TripSorter\Exceptions\PathCannotBeMadeException
      */
     public function it_throws_exception_when_a_path_cannot_be_made() {
         $set = [
-            new BoardingCard('New York', 'Stockholm'),
-            new BoardingCard('Barcelona', 'Gerona'),
-            new BoardingCard('New York', 'Barcelona'),
-            new BoardingCard('Madrid', 'Stockholm'),
+            new Edge('New York', 'Stockholm'),
+            new Edge('Barcelona', 'Gerona'),
+            new Edge('New York', 'Barcelona'),
+            new Edge('Madrid', 'Stockholm'),
         ];
 
         $sorter = new Sorter($set);

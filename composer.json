@@ -9,7 +9,10 @@
     ],
     "require": {},
     "autoload": {
-        "psr-4": {"TripSorter\\": "src/"}
+        "psr-4": {
+            "TripSorter\\": "src/",
+            "TripSorter\\Test\\": "tests/"
+        }
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5"

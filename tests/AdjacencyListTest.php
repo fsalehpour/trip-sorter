@@ -6,9 +6,11 @@
  * Time: 21:51
  */
 
+namespace TripSorter\Test;
+
 use TripSorter\AdjacencyList;
 use PHPUnit\Framework\TestCase;
-use TripSorter\BoardingCard;
+use TripSorter\Test\Helpers\Edge;
 
 class AdjacencyListTest extends TestCase
 {
@@ -17,8 +19,8 @@ class AdjacencyListTest extends TestCase
      */
     public function it_adds_a_given_edge_to_the_list() {
         $list = new AdjacencyList();
-        $list->add(new BoardingCard("A", "B"));
-        $expected = [new BoardingCard("A", "B")];
+        $list->add(new Edge("A", "B"));
+        $expected = [new Edge("A", "B")];
         $this->assertEquals($expected, $list->getNeighbours("A"));
     }
 
@@ -27,7 +29,7 @@ class AdjacencyListTest extends TestCase
      */
     public function it_adds_both_sides_of_a_given_edge_to_list() {
         $list = new AdjacencyList();
-        $list->add(new BoardingCard("A", "B"));
+        $list->add(new Edge("A", "B"));
         $this->assertEquals([], $list->getNeighbours("B"));
     }
 
@@ -36,11 +38,11 @@ class AdjacencyListTest extends TestCase
      */
     public function it_adds_multiple_edges_to_the_list() {
         $list = new AdjacencyList();
-        $list->add(new BoardingCard("A", "B"));
-        $list->add(new BoardingCard("A", "C"));
+        $list->add(new Edge("A", "B"));
+        $list->add(new Edge("A", "C"));
         $expected = [
-            new BoardingCard("A", "B"),
-            new BoardingCard("A", "C"),
+            new Edge("A", "B"),
+            new Edge("A", "C"),
         ];
         $this->assertEquals($expected, $list->getNeighbours("A"));
     }
@@ -50,8 +52,8 @@ class AdjacencyListTest extends TestCase
      */
     public function it_returns_array_of_all_vertices_in_the_list() {
         $list = new AdjacencyList();
-        $list->add(new BoardingCard("A", "B"));
-        $list->add(new BoardingCard("A", "C"));
+        $list->add(new Edge("A", "B"));
+        $list->add(new Edge("A", "C"));
         $this->assertEquals(["A","B","C"], $list->getVertices());
     }
 
@@ -60,9 +62,9 @@ class AdjacencyListTest extends TestCase
      */
     public function it_returns_out_degree_of_a_vertex() {
         $list = new AdjacencyList();
-        $list->add(new BoardingCard("A", "B"));
-        $list->add(new BoardingCard("A", "C"));
-        $list->add(new BoardingCard("B", "C"));
+        $list->add(new Edge("A", "B"));
+        $list->add(new Edge("A", "C"));
+        $list->add(new Edge("B", "C"));
         $this->assertEquals(2, $list->getOutDegree("A"));
         $this->assertEquals(1, $list->getOutDegree("B"));
         $this->assertEquals(0, $list->getOutDegree("C"));
@@ -73,9 +75,9 @@ class AdjacencyListTest extends TestCase
      */
     public function it_returns_in_degree_of_a_vertex() {
         $list = new AdjacencyList();
-        $list->add(new BoardingCard("A", "B"));
-        $list->add(new BoardingCard("A", "C"));
-        $list->add(new BoardingCard("B", "C"));
+        $list->add(new Edge("A", "B"));
+        $list->add(new Edge("A", "C"));
+        $list->add(new Edge("B", "C"));
         $this->assertEquals(0, $list->getInDegree("A"));
         $this->assertEquals(1, $list->getInDegree("B"));
         $this->assertEquals(2, $list->getInDegree("C"));
@@ -86,11 +88,11 @@ class AdjacencyListTest extends TestCase
      */
     public function it_pops_an_edge_for_a_vertex() {
         $list = new AdjacencyList();
-        $list->add(new BoardingCard("A", "B"));
-        $list->add(new BoardingCard("A", "C"));
-        $list->add(new BoardingCard("B", "C"));
+        $list->add(new Edge("A", "B"));
+        $list->add(new Edge("A", "C"));
+        $list->add(new Edge("B", "C"));
         $this->assertEquals(2, $list->getOutDegree("A"));
-        $this->assertEquals(new BoardingCard("A", "C"), $list->pop("A"));
+        $this->assertEquals(new Edge("A", "C"), $list->pop("A"));
         $this->assertEquals(1, $list->getOutDegree("A"));
     }
 }
