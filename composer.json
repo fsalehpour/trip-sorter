@@ -1,0 +1,14 @@
+{
+    "name": "fsalehpour/trip-sorter",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Faramarz Salehpour",
+            "email": "subs@marz.co"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    }
+}
