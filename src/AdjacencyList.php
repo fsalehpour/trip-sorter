@@ -11,7 +11,14 @@ namespace TripSorter;
 
 class AdjacencyList
 {
+    /**
+     * @var array
+     */
     protected $list;
+    /**
+     * @var array
+     */
+    protected $in;
 
     /**
      * AdjacencyList constructor.
@@ -20,13 +27,16 @@ class AdjacencyList
     {
     }
 
-    public function add(BoardingCard $edge)
+    public function add(BoardingCard $edge): void
     {
         $from = $edge->getFrom();
         $to = $edge->getTo();
         $this->list[$from] = $this->list[$from] ?: [];
         $this->list[$to] = $this->list[$to] ?: [];
+        $this->in[$from] = $this->in[$from] ?: 0;
+        $this->in[$to] = $this->in[$to] ?: 0;
         array_push($this->list[$from], $edge);
+        $this->in[$to]++;
     }
 
     public function getNeighbours(string $vertex): array
@@ -39,4 +49,13 @@ class AdjacencyList
         return array_keys($this->list);
     }
 
+    public function getOutDegree(string $vertex): int
+    {
+        return count($this->list[$vertex]);
+    }
+
+    public function getInDegree(string $vertex): int
+    {
+        return $this->in[$vertex];
+    }
 }
