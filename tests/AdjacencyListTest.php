@@ -8,9 +8,9 @@
 
 namespace TripSorter\Test;
 
-use TripSorter\AdjacencyList;
 use PHPUnit\Framework\TestCase;
 use TripSorter\Test\Helpers\Edge;
+use TripSorter\Util\AdjacencyList;
 
 class AdjacencyListTest extends TestCase
 {

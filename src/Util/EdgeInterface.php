@@ -6,7 +6,7 @@
  * Time: 21:52
  */
 
-namespace TripSorter;
+namespace TripSorter\Util;
 
 
 interface EdgeInterface

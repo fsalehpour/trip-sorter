@@ -8,7 +8,7 @@
 
 namespace TripSorter\Test\Helpers;
 
-use TripSorter\EdgeInterface;
+use TripSorter\Util\EdgeInterface;
 
 class Edge implements EdgeInterface
 {

@@ -6,7 +6,7 @@
  * Time: 21:45
  */
 
-namespace TripSorter;
+namespace TripSorter\Util;
 
 
 class AdjacencyList

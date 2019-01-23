@@ -9,6 +9,7 @@
 namespace TripSorter;
 
 use TripSorter\Exceptions\PathCannotBeMadeException;
+use TripSorter\Util\AdjacencyList;
 
 class Sorter
 {

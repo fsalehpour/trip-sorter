@@ -10,11 +10,11 @@
  * Example: circuit with a repeated node
  */
 
-use TripSorter\AdjacencyList;
 use TripSorter\BoardingCardFormatter;
 use TripSorter\BoardingCards\BusBoardingCard;
 use TripSorter\BoardingCards\FlightBoardingCard;
 use TripSorter\Sorter;
+use TripSorter\Util\AdjacencyList;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

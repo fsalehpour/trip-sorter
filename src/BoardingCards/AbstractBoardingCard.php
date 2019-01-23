@@ -8,7 +8,7 @@
 
 namespace TripSorter\BoardingCards;
 
-use TripSorter\EdgeInterface;
+use TripSorter\Util\EdgeInterface;
 
 abstract class AbstractBoardingCard implements EdgeInterface
 {

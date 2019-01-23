@@ -9,9 +9,9 @@
 namespace TripSorter\Test;
 
 use PHPUnit\Framework\TestCase;
-use TripSorter\AdjacencyList;
 use TripSorter\Sorter;
 use TripSorter\Test\Helpers\Edge;
+use TripSorter\Util\AdjacencyList;
 
 class SorterTest extends TestCase
 {
