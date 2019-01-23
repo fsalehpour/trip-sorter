@@ -22,13 +22,6 @@ abstract class AbstractBoardingCard implements EdgeInterface
     protected $to;
 
     /**
-     * AbstractBoardingCard constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * @param string $from
      * @return AbstractBoardingCard
      */

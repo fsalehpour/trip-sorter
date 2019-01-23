@@ -17,7 +17,7 @@ class BusBoardingCard extends AbstractBoardingCard
     private $name;
 
     /**
-     * @var
+     * @var string
      */
     private $seat;
 
@@ -40,18 +40,18 @@ class BusBoardingCard extends AbstractBoardingCard
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getSeat()
+    public function getSeat(): string
     {
         return $this->seat;
     }
 
     /**
-     * @param mixed $seat
+     * @param string $seat
      * @return BusBoardingCard
      */
-    public function setSeat($seat)
+    public function setSeat(string $seat): BusBoardingCard
     {
         $this->seat = $seat;
         return $this;

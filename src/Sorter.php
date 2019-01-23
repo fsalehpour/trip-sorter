@@ -51,9 +51,9 @@ class Sorter
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    private function findStartNode()
+    private function findStartNode(): string
     {
         $this->checkIfPathExists();
         return count($this->list->getUnevenVertices()) === 0 ? $this->list->getVertices()[0] : $this->findOrigins()[0];
@@ -74,7 +74,6 @@ class Sorter
 
     /**
      * @throws PathCannotBeMadeException
-     * @return void
      */
     private function checkIfPathExists(): void
     {
