@@ -21,13 +21,6 @@ class AdjacencyList
     protected $in;
 
     /**
-     * AdjacencyList constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * @param EdgeInterface $edge
      */
     public function add(EdgeInterface $edge): void
@@ -84,5 +77,18 @@ class AdjacencyList
     public function pop(string $vertex): EdgeInterface
     {
         return array_pop($this->list[$vertex]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getUnevenVertices(): array
+    {
+        $uneven = [];
+        foreach ($this->getVertices() as $v) {
+            if ($this->getInDegree($v) != $this->getOutDegree($v))
+                $uneven[] = $v;
+        }
+        return $uneven;
     }
 }

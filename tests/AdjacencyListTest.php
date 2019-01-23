@@ -95,4 +95,15 @@ class AdjacencyListTest extends TestCase
         $this->assertEquals(new Edge("A", "C"), $list->pop("A"));
         $this->assertEquals(1, $list->getOutDegree("A"));
     }
+
+    /**
+     * @test
+     */
+    public function it_returns_vertices_with_uneven_degrees() {
+        $list = new AdjacencyList();
+        $list->add(new Edge("A", "B"));
+        $list->add(new Edge("A", "C"));
+        $list->add(new Edge("B", "C"));
+        $this->assertEquals(["A", "C"], $list->getUnevenVertices());
+    }
 }
