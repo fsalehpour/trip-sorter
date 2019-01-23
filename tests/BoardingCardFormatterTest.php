@@ -37,14 +37,14 @@ class BoardingCardFormatterTest extends TestCase
         $card = new FlightBoardingCard();
         $baggage = 'Baggage drop at ticket counter 344.';
         $card->setFlightNo('SK455')
-            ->setFrom('Gerona Airport')
+            ->setFrom('Girona Airport')
             ->setTo('Stockholm')
             ->setGate('45B')
             ->setSeat('3A')
             ->setBaggage($baggage);
 
         $this->assertEquals(
-            '- From Gerona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.' . "\n" .
+            '- From Girona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.' . "\n" .
             "- Baggage drop at ticket counter 344."
             ,
             BoardingCardFormatter::toPlainText($card));
@@ -74,14 +74,14 @@ class BoardingCardFormatterTest extends TestCase
         $card = new FlightBoardingCard();
         $baggage = 'Baggage drop at ticket counter 344.';
         $card->setFlightNo('SK455')
-            ->setFrom('Gerona Airport')
+            ->setFrom('Girona Airport')
             ->setTo('Stockholm')
             ->setGate('45B')
             ->setSeat('3A')
             ->setBaggage($baggage);
 
         $this->assertEquals(
-            '<li>From Gerona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.</li>' .
+            '<li>From Girona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.</li>' .
             "<li>Baggage drop at ticket counter 344.</li>",
             BoardingCardFormatter::toHtml($card));
     }
@@ -94,7 +94,7 @@ class BoardingCardFormatterTest extends TestCase
         $cards = [
             (new FlightBoardingCard())
                 ->setFlightNo('SK455')
-                ->setFrom('Gerona Airport')
+                ->setFrom('Girona Airport')
                 ->setTo('Stockholm')
                 ->setGate('45B')
                 ->setSeat('3A')
@@ -107,7 +107,7 @@ class BoardingCardFormatterTest extends TestCase
         ];
 
         $expected =
-            '- From Gerona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.' . "\n" .
+            '- From Girona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.' . "\n" .
             '- Baggage drop at ticket counter 344.' . "\n" .
             '- Take train 78A from Madrid to Barcelona. Sit in seat 45B.' . "\n" .
             '- You have arrived at your final destination.';
@@ -123,7 +123,7 @@ class BoardingCardFormatterTest extends TestCase
         $cards = [
             (new FlightBoardingCard())
                 ->setFlightNo('SK455')
-                ->setFrom('Gerona Airport')
+                ->setFrom('Girona Airport')
                 ->setTo('Stockholm')
                 ->setGate('45B')
                 ->setSeat('3A')
@@ -136,7 +136,7 @@ class BoardingCardFormatterTest extends TestCase
         ];
 
         $expected =
-            '<li>From Gerona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.</li>' .
+            '<li>From Girona Airport, take flight SK455 to Stockholm. Gate 45B, seat 3A.</li>' .
             '<li>Baggage drop at ticket counter 344.</li>' .
             '<li>Take train 78A from Madrid to Barcelona. Sit in seat 45B.</li>'.
             '<li>You have arrived at your final destination.</li>';

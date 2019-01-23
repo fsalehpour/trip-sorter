@@ -20,9 +20,9 @@ class BusBoardingCardTest extends TestCase
         $card = new BusBoardingCard();
         $card->setName('the airport bus')
             ->setFrom('Barcelona')
-            ->setTo('Gerona Airport');
+            ->setTo('Girona Airport');
 
-        $expected = 'Take the airport bus from Barcelona to Gerona Airport. No seat assignment.';
+        $expected = 'Take the airport bus from Barcelona to Girona Airport. No seat assignment.';
 
         $this->assertEquals($expected, $card->__toString());
     }

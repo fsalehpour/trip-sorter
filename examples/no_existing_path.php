@@ -23,8 +23,8 @@ $cards = [
 
     (new BusBoardingCard())
         ->setName('the airport bus')
-        ->setFrom('Barcelona')
-        ->setTo('Girona Airport'),
+        ->setFrom('Girona Airport')
+        ->setTo('Barcelona'),
 
     (new FlightBoardingCard())
         ->setFlightNo('SK22')

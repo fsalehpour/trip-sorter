@@ -20,7 +20,7 @@ class SorterTest extends TestCase
     public function it_sorts_a_given_array_of_boarding_cards() {
         $set = [
             new Edge('Stockholm', 'New York'),
-            new Edge('Barcelona', 'Gerona'),
+            new Edge('Barcelona', 'Girona'),
             new Edge('New York', 'Barcelona'),
             new Edge('Madrid', 'Stockholm'),
         ];
@@ -28,7 +28,7 @@ class SorterTest extends TestCase
             new Edge('Madrid', 'Stockholm'),
             new Edge('Stockholm', 'New York'),
             new Edge('New York', 'Barcelona'),
-            new Edge('Barcelona', 'Gerona'),
+            new Edge('Barcelona', 'Girona'),
         ];
 
         $sorter = new Sorter($set);
@@ -41,16 +41,16 @@ class SorterTest extends TestCase
     public function it_sorts_a_given_array_of_boarding_cards_comprising_a_circuit() {
         $set = [
             new Edge('Stockholm', 'New York'),
-            new Edge('Barcelona', 'Gerona'),
+            new Edge('Barcelona', 'Girona'),
             new Edge('New York', 'Barcelona'),
             new Edge('Madrid', 'Stockholm'),
-            new Edge('Gerona', 'Madrid'),
+            new Edge('Girona', 'Madrid'),
         ];
         $expected = [
             new Edge('Stockholm', 'New York'),
             new Edge('New York', 'Barcelona'),
-            new Edge('Barcelona', 'Gerona'),
-            new Edge('Gerona', 'Madrid'),
+            new Edge('Barcelona', 'Girona'),
+            new Edge('Girona', 'Madrid'),
             new Edge('Madrid', 'Stockholm'),
         ];
 
@@ -66,13 +66,13 @@ class SorterTest extends TestCase
             new Edge('Madrid', 'Barcelona'),
             new Edge('Stockholm', 'Barcelona'),
             new Edge('Barcelona', 'New York'),
-            new Edge('Gerona', 'Stockholm'),
-            new Edge('Barcelona', 'Gerona'),
+            new Edge('Girona', 'Stockholm'),
+            new Edge('Barcelona', 'Girona'),
         ];
         $expected = [
             new Edge('Madrid', 'Barcelona'),
-            new Edge('Barcelona', 'Gerona'),
-            new Edge('Gerona', 'Stockholm'),
+            new Edge('Barcelona', 'Girona'),
+            new Edge('Girona', 'Stockholm'),
             new Edge('Stockholm', 'Barcelona'),
             new Edge('Barcelona', 'New York'),
         ];
@@ -86,20 +86,20 @@ class SorterTest extends TestCase
      */
     public function it_sorts_a_circuit_with_recurring_city() {
         $set = [
-            new Edge('Gerona', 'Madrid'),
+            new Edge('Girona', 'Madrid'),
             new Edge('Stockholm', 'New York'),
             new Edge('Madrid', 'Barcelona'),
-            new Edge('Gerona', 'Stockholm'),
-            new Edge('New York', 'Gerona'),
-            new Edge('Barcelona', 'Gerona'),
+            new Edge('Girona', 'Stockholm'),
+            new Edge('New York', 'Girona'),
+            new Edge('Barcelona', 'Girona'),
         ];
         $expected = [
-            new Edge('Gerona', 'Stockholm'),
+            new Edge('Girona', 'Stockholm'),
             new Edge('Stockholm', 'New York'),
-            new Edge('New York', 'Gerona'),
-            new Edge('Gerona', 'Madrid'),
+            new Edge('New York', 'Girona'),
+            new Edge('Girona', 'Madrid'),
             new Edge('Madrid', 'Barcelona'),
-            new Edge('Barcelona', 'Gerona'),
+            new Edge('Barcelona', 'Girona'),
         ];
 
         $sorter = new Sorter($set);
@@ -113,7 +113,7 @@ class SorterTest extends TestCase
     public function it_throws_exception_when_a_path_cannot_be_made() {
         $set = [
             new Edge('New York', 'Stockholm'),
-            new Edge('Barcelona', 'Gerona'),
+            new Edge('Barcelona', 'Girona'),
             new Edge('New York', 'Barcelona'),
             new Edge('Madrid', 'Stockholm'),
         ];
