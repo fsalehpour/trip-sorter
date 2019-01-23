@@ -34,28 +34,9 @@ class Sorter
      */
     public function sort(): array
     {
-        $start = null;
         $stack = [];
         $path = [];
-        $odds = 0;
-        $candidates = [];
-
-        foreach ($this->list->getVertices() as $vertex) {
-            if ($this->list->getInDegree($vertex) == $this->list->getOutDegree($vertex))
-                continue;
-            $odds++;
-            if ($this->list->getInDegree($vertex) + 1 == $this->list->getOutDegree($vertex))
-                $candidates[] = $vertex;
-        }
-
-        if ($odds == 0)
-            $start = $this->list->getVertices()[0];
-        else if ($odds == 2 && count($candidates) == 1)
-            $start = $candidates[0];
-        else
-            throw new PathCannotBeMadeException();
-
-        $current = $this->list->pop($start);
+        $current = $this->list->pop($this->findStartNode());
 
         do {
             if(0 == $this->list->getOutDegree($current->getTo())) {
@@ -70,5 +51,40 @@ class Sorter
         array_unshift($path, $current);
 
         return $path;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function findStartNode()
+    {
+        $this->checkIfPathExists();
+        return count($this->list->getUnevenVertices()) === 0 ? $this->list->getVertices()[0] : $this->findOrigins()[0];
+    }
+
+    /**
+     * @return array
+     */
+    private function findOrigins(): array
+    {
+        $origins = [];
+        foreach ($this->list->getVertices() as $vertex) {
+            if (1 == $this->list->getOutDegree($vertex) - $this->list->getInDegree($vertex))
+                $origins[] = $vertex;
+        }
+        return $origins;
+    }
+
+    /**
+     * @throws PathCannotBeMadeException
+     * @return void
+     */
+    private function checkIfPathExists(): void
+    {
+        $uneven = count($this->list->getUnevenVertices());
+        $origins = count($this->findOrigins());
+
+        if ($uneven != 0 && ($uneven != 2 || $origins != 1))
+            throw new PathCannotBeMadeException();
     }
 }
