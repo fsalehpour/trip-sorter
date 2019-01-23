@@ -9,7 +9,7 @@
 namespace TripSorter\BoardingCards;
 
 
-class FlightBoardingCard extends AbstractBoardingCard
+class FlightBoardingCard extends AbstractBoardingCard implements BaggageClaimInterface
 {
     /**
      * @var string
@@ -101,5 +101,11 @@ class FlightBoardingCard extends AbstractBoardingCard
     }
 
 
-
+    /**
+     * @return string
+     */
+    function __toString(): string
+    {
+        return "From $this->from, take flight $this->flightNo to $this->to. Gate $this->gate, seat $this->seat.";
+    }
 }

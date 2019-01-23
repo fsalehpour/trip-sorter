@@ -64,4 +64,9 @@ abstract class AbstractBoardingCard implements EdgeInterface
         return $this->to;
     }
 
+    /**
+     * @return string
+     */
+    abstract function __toString(): string;
+
 }

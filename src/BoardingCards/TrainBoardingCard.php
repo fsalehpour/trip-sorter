@@ -58,4 +58,11 @@ class TrainBoardingCard extends AbstractBoardingCard
     }
 
 
+    /**
+     * @return string
+     */
+    function __toString(): string
+    {
+        return "Take train $this->trainNo from $this->from to $this->to. Sit in seat $this->seat.";
+    }
 }

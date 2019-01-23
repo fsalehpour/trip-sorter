@@ -58,4 +58,12 @@ class BusBoardingCard extends AbstractBoardingCard
     }
 
 
+    /**
+     * @return string
+     */
+    function __toString(): string
+    {
+        return "Take $this->name from $this->from to $this->to. " .
+            ($this->seat ? "Sit in seat $this->seat." : "No seat assignment.");
+    }
 }
