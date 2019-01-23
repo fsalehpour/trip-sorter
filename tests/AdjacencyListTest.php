@@ -106,4 +106,18 @@ class AdjacencyListTest extends TestCase
         $list->add(new Edge("B", "C"));
         $this->assertEquals(["A", "C"], $list->getUnevenVertices());
     }
+
+    /**
+     * @test
+     */
+    public function it_creates_a_new_adjacency_list_from_the_given_array_of_edges() {
+        $edges = [
+            new Edge("A", "B"),
+            new Edge("A", "C"),
+            new Edge("B", "C"),
+        ];
+        $list = AdjacencyList::createFromArray($edges);
+        $this->assertInstanceOf(AdjacencyList::class, $list);
+        $this->assertEquals(["A", "B", "C"], $list->getVertices());
+    }
 }

@@ -21,6 +21,18 @@ class AdjacencyList
     protected $in;
 
     /**
+     * @param array $edges
+     * @return AdjacencyList
+     */
+    public static function createFromArray(array $edges): AdjacencyList
+    {
+        $list = new static();
+        foreach ($edges as $edge)
+            $list->add($edge);
+        return $list;
+    }
+
+    /**
      * @param EdgeInterface $edge
      */
     public function add(EdgeInterface $edge): void
