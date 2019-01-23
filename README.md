@@ -1,11 +1,15 @@
 # trip-sorter
 
-Sorting a stack of boarding cards, based on Eueler path and circuit algorithms.
+Sorting a stack of boarding cards, based on Eulerian path and circuit algorithms.
 
 ## Requirements
 
 - PHP 7.1 or better.
 - PHPUnit if you are going to run the tests.
+
+## Assumptions
+
+We assume that none of the cities is a non-reachable city.
 
 ## Install
 
@@ -38,7 +42,7 @@ $ php examples/no_existing_path.php
 
 Various types of boarding cards can be created using different types defined in the project, such as `BusBoardingCard`, 
 `TrainBoardingCard`, and `FlightBoardingCard`. All of these are extending the abstract data type `AbstractBoardingCard`,
-which in turn implements and `EdgeInterface`. The extended classes have fluent setters which enables them to receive the
+which in turn implements `EdgeInterface`. The extended classes have fluent setters which enables them to receive the
 values for an instance like this:
 
 ```php
@@ -110,7 +114,7 @@ $sorter = new Sorter($list);
 $sorted = $sorter->sort();
 ```
 
-### Output formatting
+### Output Formatting
 
 The sorted list, or any array of the boarding cards, can be formatted to HTML list or plain text list of formatted 
 boarding cards as:
@@ -127,3 +131,11 @@ $text = BoardingCardFormatter::toPlainText($trainBoardingCard);
 $html = BoardingCardFormatter::toHtml($flightBoardingCard);
 ```
 
+## Extending New Types of Transport
+
+You can create new types of transport as long as they extend the `AbstractBoardingCard` or implement `EdgeInterface`.
+
+## Sorting Algorithm
+
+The sorting is done using the Eulerian path/circuit algorithm for directed graph. The complexity of the algorithm is
+`O(V+E)`, where `V` is the number of vertices and `E` is the number of edges.
