@@ -6,8 +6,15 @@
  * Time: 11:20
  */
 
+/**
+ * Example: circuit with a repeated node
+ */
+
+use TripSorter\AdjacencyList;
+use TripSorter\BoardingCardFormatter;
 use TripSorter\BoardingCards\BusBoardingCard;
 use TripSorter\BoardingCards\FlightBoardingCard;
+use TripSorter\Sorter;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -52,5 +59,5 @@ $cards = [
         ->setTo('Girona'),
 ];
 
-$sorter = new \TripSorter\Sorter($cards);
-echo \TripSorter\BoardingCardFormatter::cardsToPlainText($sorter->sort());
+$sorter = new Sorter(AdjacencyList::createFromArray($cards));
+echo BoardingCardFormatter::cardsToPlainText($sorter->sort());

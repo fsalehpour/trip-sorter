@@ -9,6 +9,7 @@
 namespace TripSorter\Test;
 
 use PHPUnit\Framework\TestCase;
+use TripSorter\AdjacencyList;
 use TripSorter\Sorter;
 use TripSorter\Test\Helpers\Edge;
 
@@ -31,7 +32,7 @@ class SorterTest extends TestCase
             new Edge('Barcelona', 'Girona'),
         ];
 
-        $sorter = new Sorter($set);
+        $sorter = new Sorter(AdjacencyList::createFromArray($set));
         $this->assertEquals($expected, $sorter->sort());
     }
 
@@ -54,7 +55,7 @@ class SorterTest extends TestCase
             new Edge('Madrid', 'Stockholm'),
         ];
 
-        $sorter = new Sorter($set);
+        $sorter = new Sorter(AdjacencyList::createFromArray($set));
         $this->assertEquals($expected, $sorter->sort());
     }
 
@@ -77,7 +78,7 @@ class SorterTest extends TestCase
             new Edge('Barcelona', 'New York'),
         ];
 
-        $sorter = new Sorter($set);
+        $sorter = new Sorter(AdjacencyList::createFromArray($set));
         $this->assertEquals($expected, $sorter->sort());
     }
 
@@ -102,7 +103,7 @@ class SorterTest extends TestCase
             new Edge('Barcelona', 'Girona'),
         ];
 
-        $sorter = new Sorter($set);
+        $sorter = new Sorter(AdjacencyList::createFromArray($set));
         $this->assertEquals($expected, $sorter->sort());
     }
 
@@ -118,7 +119,7 @@ class SorterTest extends TestCase
             new Edge('Madrid', 'Stockholm'),
         ];
 
-        $sorter = new Sorter($set);
+        $sorter = new Sorter(AdjacencyList::createFromArray($set));
         $sorter->sort();
     }
 }

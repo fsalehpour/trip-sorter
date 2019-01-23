@@ -19,14 +19,11 @@ class Sorter
 
     /**
      * Sorter constructor.
-     * @param array $edges
+     * @param AdjacencyList $list
      */
-    public function __construct(array $edges)
+    public function __construct(AdjacencyList $list)
     {
-        $this->list = new AdjacencyList();
-        foreach ($edges as $edge) {
-            $this->list->add($edge);
-        }
+        $this->list = $list;
     }
 
     /**
