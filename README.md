@@ -7,10 +7,6 @@ Sorting a stack of boarding cards, based on Eulerian path and circuit algorithms
 - PHP 7.1 or better.
 - PHPUnit if you are going to run the tests.
 
-## Assumptions
-
-We assume that none of the cities is a non-reachable city.
-
 ## Install
 
 After cloning the repository please run in the cloned directory:
@@ -54,7 +50,7 @@ $boardingCard = (new TrainBoardingCard())
 
 ```
 
-Please use an array of boarding cards to represent a stack of boarding cards needing to be sorted.
+Use an array of boarding cards to represent a stack of boarding cards needing to be sorted.
 
 ```php
 $cards = [
@@ -90,7 +86,7 @@ $cards = [
 ### Directed Graph Representation by Adjacency List 
 
 The __stack of cards__ can then be passed to the factory method of the `AdjacencyList` class to create an adjacency list
-of a graph comprising of cities or locations as vertices and boarding cards as edges.
+of a graph comprising of cities or locations as vertices and trips indicated by boarding cards as edges.
 
 ```php
 $list = AdjacencyList::createFromArray($cards);
@@ -106,7 +102,7 @@ $list->add($edge);
 ### Sorting
 
 The `Sorter` class, accepts an `AdjacencyList` object containing edges (in our case, boarding cards) as the only 
-parameter of its constructor. After instantiation calling the sort method on the object will proceed with checking and
+parameter of its constructor. After instantiation, calling the sort method on the object will proceed with checking and
 sorting the given edges (boarding cards) and finally returns the sorted list as an array of edges.
 
 ```php
@@ -133,7 +129,7 @@ $html = BoardingCardFormatter::toHtml($flightBoardingCard);
 
 ## Extending New Types of Transport
 
-You can create new types of transport as long as they extend the `AbstractBoardingCard` or implement `EdgeInterface`.
+New types of transport can be created by extending `AbstractBoardingCard`.
 
 ## Sorting Algorithm
 
